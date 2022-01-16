@@ -10,9 +10,9 @@ import web.models.User;
 
 @Controller
 //Для тестов
-//@RequestMapping("/admin")
+@RequestMapping("/admin")
 //@RequestMapping("/")
-@RequestMapping()
+//@RequestMapping()
 public class AdminController {
 
 
@@ -51,18 +51,25 @@ public class AdminController {
 //        return "hello";
 //    }
 
-//    @GetMapping("/login")
-//    public String loginPage() {
-//        //return "login_default";
-//        return "login";
-//    }
+    @GetMapping("/login")
+    public String loginPage() {
+        //return "login_default";
+        return "login";
+    }
 
-
-    @GetMapping("/index")
-    //@GetMapping()
+/*
+    //@GetMapping("/index")
+    @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("people", userService.index());
         return "index";
+    }
+    */
+
+    @GetMapping()
+    public String getUsers(Model model) {
+        model.addAttribute("people", userService.index());
+        return "admin/index";
     }
 
     @GetMapping("/admin/{id}")

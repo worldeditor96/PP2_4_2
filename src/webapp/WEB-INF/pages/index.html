@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+
+    <title>ALL USERS</title>
+</head>
+<body>
+
+    <h1> Users </h1>
+
+<table border="1">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Password</th>
+
+    </tr>
+    <tr th:each="user, state : ${people}"
+        class="row" th:classappend="${state.odd} ? 'odd-row' : 'even-row'">
+        <td th:utext="${state.count}">No</td>
+        <td th:utext="${user.username}">Name</td>
+        <td th:utext="${user.lastName}">Last Name</td>
+        <td th:utext="${user.password}">age</td>
+
+        <td><a th:href="@{/{id}/edit(id=${user.getId()})}">Edit</a></td>
+
+
+        <td><form th:method="DELETE" th:action="@{/{id}/(id=${user.getId()})}">
+            <input type="submit" value="DELETE"/>
+        </form></td>
+    </tr>
+</table>
+
+<br/>
+<hr/>
+<a href="/new">Create new person</a>
+
+    <hr/>
+
+    <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
+        <button class ="btn btn-outline-success my-2 my-sm-0">Выйти</button>
+    </form>
+
+</body>
+</html>
