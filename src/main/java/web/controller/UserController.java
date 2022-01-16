@@ -22,7 +22,7 @@ import java.util.List;
 //@RequestMapping()
 public class UserController {
 
-    /*
+
     private final UserService userService;
 
 
@@ -54,7 +54,7 @@ public class UserController {
         model.addAttribute("user", userService.show(id));
         return "user/show_User";
     }
-    */
+
 
     /*
     // На создавал кучу одинаковыъ методов это метод тот же что и show (showUser)/ Смотри вверху

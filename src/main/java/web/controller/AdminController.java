@@ -50,25 +50,17 @@ public class AdminController {
 //
 //        return "hello";
 //    }
+//
+//    @GetMapping("/login")
+//    public String loginPage() {
+//        return "login";
+//    }
 
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
-    }
-
-/*
-    //@GetMapping("/index")
-    @GetMapping("/")
+//РАБОТАТЕ
+    @GetMapping()
     public String index(Model model) {
         model.addAttribute("people", userService.index());
         return "index";
-    }
-    */
-
-    @GetMapping()
-    public String getUsers(Model model) {
-        model.addAttribute("people", userService.index());
-        return "admin/index";
     }
 
     @GetMapping("/admin/{id}")
@@ -77,16 +69,29 @@ public class AdminController {
         return "admin/show";
     }
 
+    @GetMapping("/{id}")
+    public String getUserInfoByName(@PathVariable("id") int id, Model model) {
+        User user = userService.show(id);
+        model.addAttribute("user", user);
+        model.addAttribute("roles", user.getRoles());
+        return "admin/showForAdmin";
+    }
+
+//    @GetMapping("/new")
+//    public String newPerson(Model model){
+//        model.addAttribute("user", new User());
+//        return "admin/new";
+//    }
     @GetMapping("/new")
-    public String newPerson(Model model){
-        model.addAttribute("user", new User());
+    public String newUser(@ModelAttribute("user") User user, Model model) {
+        model.addAttribute("roles", roleService.getAllRoles());
         return "admin/new";
     }
 
     @PostMapping("/")
     public String create(@ModelAttribute("user") User user){
         userService.save(user);
-        return "redirect:/admin/index";
+        return "redirect:/index";
     }
 
     @GetMapping("{id}/edit")
@@ -94,6 +99,14 @@ public class AdminController {
         model.addAttribute("user", userService.show(id));
         return "admin/edit";
     }
+
+//    @GetMapping("/{id}/edit")
+//    public String edit(Model model, @PathVariable("id") long id) {
+//        User user = userService.getUser(id);
+//        model.addAttribute("user", user);
+//        model.addAttribute("roles", roleService.getAllRoles());
+//        return "admin/edit";
+//    }
 
     @PatchMapping("{id}")
     public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {

@@ -18,7 +18,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "username", unique = true)
     private String username;
 
     @Size(min = 1, max = 30)
