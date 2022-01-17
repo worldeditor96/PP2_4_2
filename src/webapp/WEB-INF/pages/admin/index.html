@@ -17,7 +17,6 @@
         <th>Last Name</th>
         <th>Password</th>
         <th>Role</th>
-        <th>IED</th>
         <th>Info</th>
 
     </tr>
@@ -29,16 +28,8 @@
         <td th:utext="${user.password}">password</td>
         <td th:text="${user.getRoles()}"></td>
 
-<!--        <td><a th:href="@{/{id}/edit(id=${user.getId()})}">Edit</a>-->
-        <td><a th:href="@{/admin/{id}(id=${user.getId()})}">Info Edit Delet</a>
-        <form th:method="DELETE" th:action="@{/admin/{id}/(id=${user.getId()})}">
-            <input type="submit" value="DELETE"/>
-        </form></td>
 
-<!--        Выбросит на инфо карапета-->
-<!--        <td><form th:method="GET" th:action="@{admin/{id}(id=${user.getId()})}">-->
-<!--            <input type="submit" value="Info"/>-->
-<!--        </form></td>-->
+        <td><a th:href="@{/admin/{id}(id=${user.getId()})}">Show data</a>
 
     </tr>
 </table>
@@ -48,7 +39,7 @@
 <a href="/admin/new">Create new person</a>
 
     <hr/>
-    <form th:align="center" th:method="POST" th:action="@{/logout}">
+    <form th:method="POST" th:action="@{/logout}">
         <input type="submit" value="Exit"/>
     </form>
 </body>

@@ -12,6 +12,4 @@ public interface UserDAO {
     void delete(int id);
     User getUserByName(String username);
 
-    //User getUser(long id);
-
 }

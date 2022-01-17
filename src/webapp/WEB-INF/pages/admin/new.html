@@ -2,30 +2,48 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New user in ADMIN</title>
+    <title>New User</title>
 </head>
 <body>
-<h1 th:align="center">Create New User</h1>
-<form th:method="POST" th:action="@{/}" th:object="${user}">
-    <label for="name">Enter name: </label>
-    <input type="text" th:field="*{username}" id="name"/>
+<h1>Create New User</h1>
+<br/>
+<br/>
+<form th:marginwidth="auto" th:method="POST" th:action="@{/admin}" th:object="${user}">
+    <div>
+        <label for="username">Enter username: </label>
+        <input type="text" th:field="*{username}" id="username"/>
+    </div>
     <br/>
-    <label for="name">Enter last name: </label>
-    <input type="text" th:field="*{lastName}" id="lastName"/>
-    <br/>
-    <label for=name>Enter password: </label>
-    <input type="text" th:field="*{password}" id="password"/>
-    <br/>
-    <input type="submit" value="Create"/>
 
+    <div>
+        <label for="name">Enter Last name: </label>
+        <input type="text" th:field="*{lastName}" id="name"/>
+    </div>
+    <br/>
 
+    <div>
+        <label for="password">Enter password: </label>
+        <input type="text" th:field="*{password}" id="password"/>
+    </div>
+    <br/>
+
+    <div>
+        <input type="checkbox" th:name="roles" th:value="ROLE_USER"/> USER
+        <input type="checkbox" th:name="roles" th:value="ROLE_ADMIN"/> ADMIN
+    </div>
+    <br/>
+    <div>
+        <input type="submit" value="Create"/>
+    </div>
 </form>
 
 <hr/>
-<br/>
-<form th:align="center" th:method="POST" th:action="@{/logout}">
-    <input type="submit" value="Logout"/>
+<form th:method="GET" th:action="@{/admin}">
+    <input type="submit" value="Back"/>
 </form>
-
+<br/>
+<form th:method="POST" th:action="@{/logout}">
+    <input type="submit" value="Exit"/>
+</form>
 </body>
 </html>

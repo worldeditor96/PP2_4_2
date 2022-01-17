@@ -35,50 +35,35 @@ public class UserDAOImpl implements UserDAO {
         return entityManager.find(User.class, id);
     }
 
-//
-//    @Override
-//    public User getUser(long id) {
-//        return (User) entityManager.createQuery("from User u JOIN fetch u.roles where u.id=:id")
-//                .setParameter("id", id).getSingleResult();
-//    }
-
-    /**внимание
-    //Удалить этот метод, есть Метод create для администратора????????????????????????????????????????????????????????????????????
-     */
-    @Transactional
+    @Override
     public void save (User user){
         entityManager.persist(user);
         entityManager.close();
     }
 
-    //Метод для администратора
-    @Transactional
+    //@Transactional
+    @Override
     public void update (int id, User updatePerson) {
         User personToBeUpdate =  entityManager.getReference(User.class,id);
 
         personToBeUpdate.setUsername(updatePerson.getUsername());
         personToBeUpdate.setLastName(updatePerson.getLastName());
         personToBeUpdate.setPassword(updatePerson.getPassword());
+        //personToBeUpdate.setRoles(updatePerson.getRoles());
     }
 
-    //Метод для администратора
-    @Transactional
+    @Override
     public void delete (int id) {
         User user = entityManager.find(User.class, id);
         if (user != null) {
             entityManager.remove(user);
         }
     }
-    /**внимание
-    // Недопилен,????????????????????????????????????????????????????????????????????????????????????
-     */
+
     @Override
     public User getUserByName(String username) {
         return (User) entityManager.createQuery("from User u where u.username=:username")
                 .setParameter("username", username).getSingleResult();
     }
-
-
-
 
 }

@@ -8,14 +8,14 @@
 <h1> User data </h1>
 <label>Name:  </label>
 <a th:text="${user.getUsername()}">VALUE</a>
-<p></p>
+<br/>
 <label>Last Name: </label>
 <a th:text="${user.getLastName()}">VALUE</a>
 
 <hr/>
-<form th:align="center" th:method="POST" th:action="@{/logout}">
-    <input type="submit" value="Exit"/>
 
+<form th:method="POST" th:action="@{/logout}">
+    <input type="submit" value="Exit"/>
 </form>
 </body>
 </html>
