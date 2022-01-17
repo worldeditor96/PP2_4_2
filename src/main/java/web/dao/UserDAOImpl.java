@@ -7,22 +7,15 @@ import org.springframework.transaction.annotation.Transactional;
 import web.models.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
 @ComponentScan("config")
 public class UserDAOImpl implements UserDAO {
 
+    @PersistenceContext
     private EntityManager entityManager;
-
-//    @Autowired
-//    UserRepository userRepository;
-//
-//    @Autowired
-//    RoleRepository roleRepository;
-
-//    @Autowired
-//    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public UserDAOImpl(EntityManager entityManager) {
@@ -30,15 +23,24 @@ public class UserDAOImpl implements UserDAO {
     }
 
 
-    @Transactional
+    //@Transactional
+    @Override
     public List<User> index() {
         return entityManager.createQuery("SELECT user FROM User user", User.class).getResultList();
     }
 
-    @Transactional
+    //@Transactional
+    @Override
     public User show(int id){
         return entityManager.find(User.class, id);
     }
+
+//
+//    @Override
+//    public User getUser(long id) {
+//        return (User) entityManager.createQuery("from User u JOIN fetch u.roles where u.id=:id")
+//                .setParameter("id", id).getSingleResult();
+//    }
 
     /**внимание
     //Удалить этот метод, есть Метод create для администратора????????????????????????????????????????????????????????????????????
@@ -75,6 +77,8 @@ public class UserDAOImpl implements UserDAO {
         return (User) entityManager.createQuery("from User u where u.username=:username")
                 .setParameter("username", username).getSingleResult();
     }
+
+
 
 
 }

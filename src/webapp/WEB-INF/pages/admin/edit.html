@@ -17,6 +17,9 @@
     <input type="text" th:field="*{password}" id="age"/>
     <br/>
     <input type="submit" value="UPDATE"/>
+    <hr/>
+    <form th:align="center" th:method="POST" th:action="@{/logout}">
+        <input type="submit" value="Exit"/>
 </form>
 </body>
 </html>

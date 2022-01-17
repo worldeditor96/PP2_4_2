@@ -5,20 +5,27 @@
     <title>USER</title>
 </head>
 <body>
-<h1 th:align="center">User Info</h1>
-<p th:text="${user.getUsername()}">VALUE</p>
+<h1 th:align="center">User data show</h1>
+
+<label>ID: </label>
 <p th:text="${user.getId()}">VALUE</p>
+<p></p>
+<label> Name:  </label>
+<p th:text="${user.getUsername()}">VALUE</p>
+<p></p>
+<label>Last Name: </label>
 <p th:text="${user.getLastName()}">VALUE</p>
 
 
 <a th:href="@{/{id}/edit(id=${user.getId()})}">Edit</a>
 
-<form th:method="DELETE" th:action="@{/{id}/(id=${user.getId()})}">
+<form th:method="DELETE" th:action="@{/admin/{id}/(id=${user.getId()})}">
    <input type="submit" value="DELETE"/>
 
     <hr/>
-    <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
-        <button class ="btn btn-outline-success my-2 my-sm-0">Выйти</button>
+    <br/>
+    <form th:align="center" th:method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout"/>
     </form>
 
 </form>

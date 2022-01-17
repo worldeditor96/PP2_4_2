@@ -14,13 +14,14 @@
     <input type="text" th:field="*{lastName}" id="lastName"/>
     <br/>
     <label for=name>Enter password: </label>
-    <input type="text" th:field="*{password}" id="age"/>
+    <input type="text" th:field="*{password}" id="password"/>
     <br/>
     <input type="submit" value="Create"/>
 
     <hr/>
-    <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
-        <button class ="btn btn-outline-success my-2 my-sm-0">Выйти</button>
+    <br/>
+    <form th:align="center" th:method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout"/>
     </form>
 
 </form>
