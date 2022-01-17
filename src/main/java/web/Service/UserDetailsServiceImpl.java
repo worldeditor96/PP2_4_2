@@ -11,8 +11,6 @@ import web.dao.UserDAO;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    //перенесем данные из ЮзерРепозиторий в Юзер ДАО, а здесь Заменим ЮзерДАО. Переменную репозитори везде поменяем на юзерДАО
-    //private final UserRepository repository;
     private final UserDAO userDAO;
 
     @Autowired
