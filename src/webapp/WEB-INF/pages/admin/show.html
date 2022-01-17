@@ -22,12 +22,13 @@
 <form th:method="DELETE" th:action="@{/admin/{id}/(id=${user.getId()})}">
    <input type="submit" value="DELETE"/>
 
-    <hr/>
-    <br/>
-    <form th:align="center" th:method="POST" th:action="@{/logout}">
-        <input type="submit" value="Logout"/>
-    </form>
-
 </form>
+
+<hr/>
+<br/>
+<form th:align="center" th:method="POST" th:action="@{/logout}">
+    <input type="submit" value="Logout"/>
+</form>
+
 </body>
 </html>
